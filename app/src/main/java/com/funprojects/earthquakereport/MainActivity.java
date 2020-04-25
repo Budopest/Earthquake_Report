@@ -3,6 +3,7 @@ package com.funprojects.earthquakereport;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
         earthquakeArray.add(new Earthquake("Tokyo"));
         earthquakeArray.add(new Earthquake("Los Anglos"));
 
+        EarthquakeAdabter earthquakeAdabter = new EarthquakeAdabter(this,earthquakeArray);
+        ListView listView = (ListView) findViewById(R.id.quakelist);
+        listView.setAdapter(earthquakeAdabter);
 
 
     }
