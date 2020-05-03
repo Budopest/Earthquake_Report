@@ -1,7 +1,9 @@
 package com.funprojects.earthquakereport;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +31,7 @@ public class EarthquakeAdabter extends ArrayAdapter<Earthquake> {
         if(listItemView ==null){
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.earthquake_list_item,parent,false);
         }
-        Earthquake currentEarthquake = getItem(position);
+        final Earthquake currentEarthquake = getItem(position);
         TextView mag = (TextView) listItemView.findViewById(R.id.magText);
         TextView location = (TextView) listItemView.findViewById(R.id.locationText);
         TextView smallLocation = (TextView) listItemView.findViewById(R.id.smallLocationText);
@@ -59,6 +61,16 @@ public class EarthquakeAdabter extends ArrayAdapter<Earthquake> {
             smallLocation.setText("near the ");
             location.setText(originalLocation);
         }
+        final Context context = getContext();
+        listItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent webpage = new Intent();
+                webpage.setAction(Intent.ACTION_VIEW);
+                webpage.setData(Uri.parse(currentEarthquake.getUrl()));
+                context.startActivity(webpage);
+            }
+        });
         return listItemView;
     }
 }

@@ -17,20 +17,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final ArrayList<Earthquake> quakeList = QueryUtils.extractEarthquakes();
-        EarthquakeAdabter earthquakeAdabter = new EarthquakeAdabter(this,quakeList);
-        ListView listView = (ListView) findViewById(R.id.quakelist);
-        listView.setAdapter(earthquakeAdabter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent webPage = new Intent();
-                webPage.setAction(Intent.ACTION_VIEW);
-                webPage.setData(Uri.parse(quakeList.get(position).getUrl()));
-                startActivity(webPage);
-            }
-        });
 
+        NetworkHandler networkHandler = new NetworkHandler();
+        networkHandler.context = this;
+        networkHandler.execute(QueryUtils.getUrl());
 
     }
+
 }
