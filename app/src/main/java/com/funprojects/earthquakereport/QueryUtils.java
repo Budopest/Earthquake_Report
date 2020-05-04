@@ -65,7 +65,7 @@ public final class QueryUtils {
         } catch (IOException e) {
             Log.e(QueryUtils.class.getSimpleName(), "Error closing the stream");
         }
-        //Log.v("json response",jsonResponse);
+        Log.v("json response",jsonResponse);
         // Create an empty ArrayList that we can start adding earthquakes to
         ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();
         // parse the json query

@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+@Deprecated
 public class NetworkHandler extends AsyncTask<String,Void, ArrayList<Earthquake>> {
 
     Context context;
@@ -25,9 +26,9 @@ public class NetworkHandler extends AsyncTask<String,Void, ArrayList<Earthquake>
     @Override
     protected void onPostExecute(ArrayList<Earthquake> earthquakes) {
 
-        EarthquakeAdabter earthquakeAdabter = new EarthquakeAdabter(context,earthquakes) ;
+        EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(context,earthquakes) ;
         ListView listView = (ListView) ((Activity)context).findViewById(R.id.quakelist);
-        listView.setAdapter(earthquakeAdabter);
+        listView.setAdapter(earthquakeAdapter);
 
     }
 }

@@ -16,11 +16,11 @@ import androidx.core.content.ContextCompat;
 
 import java.util.List;
 
-public class EarthquakeAdabter extends ArrayAdapter<Earthquake> {
+public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
     private static final String LOCATION_SEPARATOR = " of ";
 
-    public EarthquakeAdabter(@NonNull Context context, @NonNull List objects) {
+    public EarthquakeAdapter(@NonNull Context context, @NonNull List objects) {
         super(context, 0, objects);
     }
 
